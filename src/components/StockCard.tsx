@@ -10,8 +10,13 @@ export default function StockCard({ stock, onSync }: { stock: any, onSync: () =>
   const score = stock[5];
 
   const handleSync = async () => {
-    await syncStock(symbol);
-    onSync();
+    try {
+      await syncStock(symbol);
+      onSync();
+    } catch (error) {
+      console.error(error);
+      alert(`Failed to sync ${symbol}. Ensure the ticker is correct (e.g. RELIANCE.NS for Indian stocks).`);
+    }
   };
 
   const handleDelete = async () => {

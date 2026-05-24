@@ -9,7 +9,13 @@ export default function AddStock({ market, onAdd }: { market: string, onAdd: () 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const currency = market === 'US' ? 'USD' : 'INR';
-    await query(`INSERT INTO stocks (symbol, name, market, currency) VALUES ('${symbol}', '${name}', '${market}', '${currency}')`);
+    
+    let normalizedSymbol = symbol.toUpperCase().trim();
+    if (market === 'IN' && !normalizedSymbol.includes('.')) {
+      normalizedSymbol += '.NS';
+    }
+
+    await query(`INSERT INTO stocks (symbol, name, market, currency) VALUES ('${normalizedSymbol}', '${name}', '${market}', '${currency}')`);
     setSymbol('');
     setName('');
     onAdd();
