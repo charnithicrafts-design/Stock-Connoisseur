@@ -5,10 +5,20 @@ let db: any;
 
 const initDb = async () => {
   const sqlite3 = await sqlite3InitModule();
-  if ('opfs' in sqlite3) {
-    db = new sqlite3.oo1.OpfsDb('/stock_connoisseur.db');
-  } else {
-    db = new sqlite3.oo1.DB('/stock_connoisseur.db', 'ct');
+  console.log('SQLite3 version:', sqlite3.version.libVersion);
+
+  try {
+    if ('opfs' in sqlite3) {
+      db = new sqlite3.oo1.OpfsDb('/stock_connoisseur.db');
+      console.log('Using OPFS persistence:', db.filename);
+    } else {
+      console.warn('OPFS not available, falling back to transient storage');
+      db = new sqlite3.oo1.DB('/stock_connoisseur.db', 'ct');
+    }
+  } catch (err) {
+    console.error('Failed to initialize database:', err);
+    // Fallback to in-memory if everything fails
+    db = new sqlite3.oo1.DB();
   }
   
   db.exec(`
