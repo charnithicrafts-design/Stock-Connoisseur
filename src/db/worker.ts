@@ -6,6 +6,8 @@ let db: any;
 const initDb = async () => {
   const sqlite3 = await sqlite3InitModule();
   console.log('SQLite3 version:', sqlite3.version.libVersion);
+  console.log('Is secure context:', self.isSecureContext);
+  console.log('SharedArrayBuffer available:', typeof SharedArrayBuffer !== 'undefined');
 
   try {
     if ('opfs' in sqlite3) {
