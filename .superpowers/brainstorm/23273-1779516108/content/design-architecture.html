@@ -1,0 +1,35 @@
+<h2>System Architecture: The Local Minimalist</h2>
+<p class="subtitle">A privacy-first, zero-cost stock picking engine.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Data Flow Diagram</div>
+  <div class="mockup-body">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+      <div class="placeholder" style="width: 120px; padding: 10px; border: 2px solid #333;">
+        <b>yfinance API</b><br><small>(External Data)</small>
+      </div>
+      <div style="font-size: 24px;">→</div>
+      <div class="placeholder" style="width: 150px; padding: 10px; border: 2px solid #007bff; background: rgba(0,123,255,0.1);">
+        <b>React PWA</b><br><small>(Service Worker)</small>
+      </div>
+      <div style="font-size: 24px;">↔</div>
+      <div class="placeholder" style="width: 120px; padding: 10px; border: 2px solid #28a745; background: rgba(40,167,69,0.1);">
+        <b>SQLite WASM</b><br><small>(Local DB)</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Core Components</h3>
+  <ul>
+    <li><b>Frontend:</b> React with TypeScript & Vanilla CSS for a fast, modern PWA experience.</li>
+    <li><b>Database:</b> SQLite WASM with Origin Private File System (OPFS) for persistent, high-performance local storage.</li>
+    <li><b>Data Fetching:</b> Client-side fetches to Yahoo Finance (via a CORS proxy) to gather daily price movements and fundamental data.</li>
+    <li><b>Storage Strategy:</b> "Snapshot" model — you trigger a sync, the app fetches data and updates the local SQLite database.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <p>Does this architecture look right to you, or should we adjust the data flow?</p>
+</div>

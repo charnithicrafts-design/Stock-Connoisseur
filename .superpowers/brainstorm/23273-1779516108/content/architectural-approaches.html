@@ -1,0 +1,74 @@
+<h2>Architectural Approaches</h2>
+<p class="subtitle">Choose the foundation for your Stock Connoisseur.</p>
+
+<div class="cards">
+  <!-- Option 1: The Local Minimalist -->
+  <div class="card" data-choice="local" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>1. The Local Minimalist</h3>
+      <p class="label">Recommended</p>
+      <p>A pure PWA using SQLite WASM. All data stays on your device. Fetches yfinance data via a simple CORS proxy.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Zero server costs</li>
+            <li>Maximum Privacy</li>
+            <li>Works offline</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Emails must be manually triggered</li>
+            <li>Data lost if browser cache cleared (without export)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option 2: The Edge Hybrid -->
+  <div class="card" data-choice="edge" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>2. The Edge Hybrid</h3>
+      <p>Uses a small Edge Function (Vercel/Cloudflare) to reliably fetch data and potentially send automated emails.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>More reliable API calls</li>
+            <li>Automated daily emails</li>
+            <li>Backup/Sync options</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Slightly more complex setup</li>
+            <li>Potential (minimal) API/Function costs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option 3: The Snapshot Specialist -->
+  <div class="card" data-choice="snapshot" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>3. The Snapshot Specialist</h3>
+      <p>A GitHub Action runs once a day to fetch data and generate a static "Snapshot" file that the PWA loads.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Lightning fast load times</li>
+            <li>Consistent daily updates</li>
+          <li>No runtime API calls</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>New stocks only update on next build</li>
+            <li>Requires GitHub account</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

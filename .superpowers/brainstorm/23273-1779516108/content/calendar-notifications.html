@@ -1,0 +1,48 @@
+<h2>Calendar & Notifications</h2>
+<p class="subtitle">How would you like to stay updated on company reports?</p>
+
+<div class="mockup">
+  <div class="mockup-header">Earnings & Reports Calendar</div>
+  <div class="mockup-body">
+    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; text-align: center;">
+      <div class="label">Mon</div><div class="label">Tue</div><div class="label">Wed</div><div class="label">Thu</div><div class="label">Fri</div><div class="label">Sat</div><div class="label">Sun</div>
+      
+      <div class="placeholder" style="height: 60px;"></div>
+      <div class="placeholder" style="height: 60px;"></div>
+      <div class="placeholder" style="height: 60px; background: rgba(0,255,0,0.1); border: 1px solid green;">
+        <span style="font-size: 10px;">AAPL Q3</span>
+      </div>
+      <div class="placeholder" style="height: 60px;"></div>
+      <div class="placeholder" style="height: 60px; background: rgba(255,165,0,0.1); border: 1px solid orange;">
+        <span style="font-size: 10px;">RELIANCE AR</span>
+      </div>
+      <div class="placeholder" style="height: 60px;"></div>
+      <div class="placeholder" style="height: 60px;"></div>
+    </div>
+  </div>
+</div>
+
+<h3>Notification Preferences</h3>
+<div class="options" data-multiselect>
+  <div class="option" data-choice="browser" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Browser/PWA Push</h3>
+      <p>Direct notifications on your device (mobile or desktop).</p>
+    </div>
+  </div>
+  <div class="option" data-choice="inapp" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>In-App Alerts</h3>
+      <p>A badge or notification center within the application itself.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="email" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Email Summaries</h3>
+      <p>Daily or weekly digest of upcoming and past reports.</p>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,23 @@ export default function Wishlist({ market }: { market: 'US' | 'IN' }) {
   const [stocks, setStocks] = useState<any[]>([]);
 
   const loadStocks = async () => {
-    const result = await query(`SELECT * FROM stocks WHERE market = '${market}'`);
+    const result = await query(`
+      SELECT 
+        s.symbol, 
+        s.name, 
+        s.market, 
+        s.currency,
+        sn.price,
+        sn.score,
+        sn.timestamp
+      FROM stocks s
+      LEFT JOIN (
+        SELECT symbol, price, score, timestamp,
+               ROW_NUMBER() OVER (PARTITION BY symbol ORDER BY timestamp DESC) as rn
+        FROM snapshots
+      ) sn ON s.symbol = sn.symbol AND sn.rn = 1
+      WHERE s.market = '${market}'
+    `);
     setStocks((result as any[]) || []);
   };
 

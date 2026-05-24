@@ -1,0 +1,42 @@
+<h2>Intimator Logic & Calendar</h2>
+<p class="subtitle">The engine that picks stocks and tracks reports.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Logic & UI Preview</div>
+  <div class="mockup-body">
+    <div class="split">
+      <div class="section">
+        <h3>1. The Intimator Engine</h3>
+        <p class="label">Performance Score (0-100)</p>
+        <div style="font-size: 12px; line-height: 1.4;">
+          <p><b>Fundamentals (60%)</b>: P/E, EPS Growth, Debt/Equity thresholds.</p>
+          <p><b>Technical (40%)</b>: Distance from 200-day SMA, RSI oversold/bought status.</p>
+          <p><i>Calculated on sync and saved as a static snapshot.</i></p>
+        </div>
+      </div>
+      <div class="section">
+        <h3>2. Reporting Calendar</h3>
+        <p class="label">Notifications</p>
+        <div style="font-size: 12px; line-height: 1.4;">
+          <p><b>Events</b>: Quarterly (Q1-Q4) and Annual Reports (AR).</p>
+          <p><b>Push</b>: Browser alerts 1 day before and morning of report.</p>
+          <p><b>Local "Email"</b>: Generates a pre-filled `mailto:` link for your weekly digest.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Key Features</h3>
+  <ul>
+    <li><b>Wishlist Split:</b> Separate tabs/views for US (USD) and Indian (INR) markets.</li>
+    <li><b>Manual Sync:</b> One-tap refresh to fetch yfinance data and update all scores.</li>
+    <li><b>Calendar View:</b> Standard monthly grid with dots/labels for report dates.</li>
+    <li><b>Data Persistence:</b> All stock picks and report dates stored in SQLite WASM.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <p>How does this feature set look? Ready for the data model, or want to tweak the scoring/logic?</p>
+</div>

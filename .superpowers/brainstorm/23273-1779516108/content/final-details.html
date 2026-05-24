@@ -1,0 +1,39 @@
+<h2>Notification Delivery</h2>
+<p class="subtitle">Since you want Email and Push notifications, how should the "brain" work?</p>
+
+<div class="options">
+  <div class="option" data-choice="local-first" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Pure Local (Device-Only)</h3>
+      <p>Notifications only work while the app is open. Emails are "drafted" in your mail app. <b>No backend costs.</b></p>
+    </div>
+  </div>
+  <div class="option" data-choice="serverless" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Hybrid (Small Backend)</h3>
+      <p>A small server (or Supabase/Firebase) sends emails and push alerts even when the app is closed. <b>Required for automated email.</b></p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Recommendation Timing</h3>
+  <div class="options">
+    <div class="option" data-choice="dynamic" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>Live Re-calculation</h3>
+        <p>Recalculate scores every time you open the app or the price updates.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="static" onclick="toggleSelect(this)">
+      <div class="letter">D</div>
+      <div class="content">
+        <h3>Snapshots</h3>
+        <p>Keep the last calculated score until you manually trigger a "sync".</p>
+      </div>
+    </div>
+  </div>
+</div>

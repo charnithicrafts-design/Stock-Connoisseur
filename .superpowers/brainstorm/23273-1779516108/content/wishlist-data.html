@@ -1,0 +1,50 @@
+<h2>Wishlist & Data Sources</h2>
+<p class="subtitle">Managing stocks across US and Indian markets.</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">US Stocks (NASDAQ/NYSE)</div>
+    <div class="mockup-body">
+      <div class="mock-nav" style="font-size: 12px;">AAPL | MSFT | GOOGL</div>
+      <div class="section">
+        <p><b>AAPL</b>: $189.45 <span style="color: green;">+1.2%</span></p>
+        <div class="placeholder" style="height: 40px; font-size: 10px;">Fundamentals: P/E 28.4</div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">Indian Stocks (NSE/BSE)</div>
+    <div class="mockup-body">
+      <div class="mock-nav" style="font-size: 12px;">RELIANCE | TCS | INFOSYS</div>
+      <div class="section">
+        <p><b>RELIANCE</b>: ₹2,940 <span style="color: red;">-0.5%</span></p>
+        <div class="placeholder" style="height: 40px; font-size: 10px;">Technical: Above 200 SMA</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Preferred Data Strategy</h3>
+<div class="options">
+  <div class="option" data-choice="yfinance" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Yahoo Finance (yfinance)</h3>
+      <p>Free, wide coverage for both US and India. Good for daily updates.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="alphavantage" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Alpha Vantage / Polygon</h3>
+      <p>Robust APIs, but may require multiple keys or have strict rate limits for US/India split.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="manual" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Scraping / Custom</h3>
+      <p>More complex to maintain, but can be tailored to specific report calendars.</p>
+    </div>
+  </div>
+</div>

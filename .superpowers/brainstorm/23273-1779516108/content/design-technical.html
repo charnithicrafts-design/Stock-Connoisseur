@@ -1,0 +1,51 @@
+<h2>Data Model & Implementation</h2>
+<p class="subtitle">The technical blueprint for the Local Minimalist.</p>
+
+<div class="mockup">
+  <div class="mockup-header">SQLite Schema</div>
+  <div class="mockup-body">
+    <pre style="font-size: 11px; background: #f4f4f4; padding: 10px; border-radius: 4px;">
+CREATE TABLE stocks (
+  symbol TEXT PRIMARY KEY,
+  name TEXT,
+  market TEXT, -- 'US' or 'IN'
+  currency TEXT, -- 'USD' or 'INR'
+  added_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE snapshots (
+  symbol TEXT,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+  price REAL,
+  pe_ratio REAL,
+  market_cap REAL,
+  sma_200 REAL,
+  rsi REAL,
+  score REAL, -- 0-100 Intimator score
+  FOREIGN KEY(symbol) REFERENCES stocks(symbol)
+);
+
+CREATE TABLE events (
+  id INTEGER PRIMARY KEY,
+  symbol TEXT,
+  event_type TEXT, -- 'EARNINGS', 'ANNUAL_REPORT'
+  event_date DATE,
+  notified BOOLEAN DEFAULT 0,
+  FOREIGN KEY(symbol) REFERENCES stocks(symbol)
+);</pre>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Implementation Strategy</h3>
+  <ul>
+    <li><b>PWA:</b> Use <code>vite-plugin-pwa</code> for service worker management and offline support.</li>
+    <li><b>SQLite:</b> Use <code>@sqlite.org/sqlite-wasm</code> with the Worker API to keep the UI responsive during heavy calculations.</li>
+    <li><b>CORS Proxy:</b> Use a lightweight public proxy (like <code>cors-anywhere</code> or a simple Cloudflare Worker) to fetch yfinance data.</li>
+    <li><b>Notifications:</b> Use the <code>Notification API</code> triggered by a service worker alarm/timer when the app is backgrounded.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <p>This completes the design overview. Does the data model and implementation strategy meet your requirements?</p>
+</div>
