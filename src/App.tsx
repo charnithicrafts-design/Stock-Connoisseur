@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { initDb } from './db/client';
 import Wishlist from './components/Wishlist';
+import Calendar from './components/Calendar';
 import './App.css';
 
 function App() {
-  const [activeMarket, setActiveMarket] = useState<'US' | 'IN'>('US');
+  const [activeView, setActiveView] = useState<'US' | 'IN' | 'CALENDAR'>('US');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,12 +20,13 @@ function App() {
       <header>
         <h1>Stock Connoisseur</h1>
         <div className="tabs">
-          <button onClick={() => setActiveMarket('US')} className={activeMarket === 'US' ? 'active' : ''}>US Stocks</button>
-          <button onClick={() => setActiveMarket('IN')} className={activeMarket === 'IN' ? 'active' : ''}>Indian Stocks</button>
+          <button onClick={() => setActiveView('US')} className={activeView === 'US' ? 'active' : ''}>US Stocks</button>
+          <button onClick={() => setActiveView('IN')} className={activeView === 'IN' ? 'active' : ''}>Indian Stocks</button>
+          <button onClick={() => setActiveView('CALENDAR')} className={activeView === 'CALENDAR' ? 'active' : ''}>Calendar</button>
         </div>
       </header>
       <main>
-        <Wishlist market={activeMarket} />
+        {activeView === 'CALENDAR' ? <Calendar /> : <Wishlist market={activeView as 'US' | 'IN'} />}
       </main>
     </div>
   );
